@@ -1,8 +1,8 @@
 # Use a imagem oficial do Microsoft SQL Server
-FROM mcr.microsoft.com/mssql/server:2022-latest
+FROM quickview mcr.microsoft.com/azure-sql-edge
 
 # Defina variáveis de ambiente
-ENV SA_PASSWORD="$BookStore123"
+ENV SA_PASSWORD="BookStore123"
 ENV ACCEPT_EULA=Y
 ENV MSSQL_TCP_PORT=1433
 

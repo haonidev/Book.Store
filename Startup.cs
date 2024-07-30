@@ -1,4 +1,8 @@
-﻿namespace Book.Store.Application
+﻿using Book.Store.Data.Context;
+using Book.Store.Data.Repositories;
+using Microsoft.EntityFrameworkCore;
+
+namespace Book.Store.Application
 {
     public class Startup
     {
@@ -14,6 +18,12 @@
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+
+            services.AddDbContext<BookStoreDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("Book.Store.Data")));
+
+            services.AddScoped<ILivroRepository, LivroRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
