@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Book.Store.Data\Book.Store.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Report\" />
+  </ItemGroup>
+
 </Project>
