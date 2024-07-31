@@ -1,4 +1,5 @@
-﻿using Book.Store.Data.Context;
+﻿using Book.Store.Application.Mappings;
+using Book.Store.Data.Context;
 using Book.Store.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,7 +24,13 @@ namespace Book.Store.Application
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly("Book.Store.Data")));
 
+            services.AddAutoMapper(typeof(MappingProfile));
+
+            services.AddScoped<IAssuntoRepository, AssuntoRepository>();
             services.AddScoped<ILivroRepository, LivroRepository>();
+            services.AddScoped<ICanalRepository, CanalRepository>();
+            services.AddScoped<IAutorRepository, AutorRepository>();
+            services.AddScoped<IVendaRepository, VendaRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
