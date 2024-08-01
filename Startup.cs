@@ -1,4 +1,6 @@
 ﻿using Book.Store.Application.Mappings;
+using Book.Store.Business.Interfaces;
+using Book.Store.Business.Services;
 using Book.Store.Data.Context;
 using Book.Store.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +33,9 @@ namespace Book.Store.Application
             services.AddScoped<ICanalRepository, CanalRepository>();
             services.AddScoped<IAutorRepository, AutorRepository>();
             services.AddScoped<IVendaRepository, VendaRepository>();
+
+            services.AddScoped<IAssuntoService, AssuntoService>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

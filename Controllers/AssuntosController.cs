@@ -1,8 +1,6 @@
-﻿using AutoMapper;
-using Book.Store.Data.Repositories;
+﻿using Book.Store.Business.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using DomainAssunto = Book.Store.Business.Domain.Assunto;
-using EntityAssunto = Book.Store.Data.Entities.Assunto;
+using Book.Store.Business.Domain;
 
 namespace Book.Store.Application.Controllers
 {
@@ -10,58 +8,53 @@ namespace Book.Store.Application.Controllers
     [Route("api/[controller]")]
     public class AssuntosController : ControllerBase
     {
-        private readonly IMapper _mapper;
-        private readonly IAssuntoRepository _assuntoRepository;
+        private readonly IAssuntoService _assuntoService;
 
-        public AssuntosController(IMapper mapper, IAssuntoRepository assuntoRepository)
+        public AssuntosController(IAssuntoService assuntoService)
         {
-            _mapper = mapper;
-            _assuntoRepository = assuntoRepository;
+            _assuntoService = assuntoService;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<DomainAssunto>> Get()
+        public async Task<IEnumerable<Assunto>?> Get()
         {
-            var assuntos = await _assuntoRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<DomainAssunto>>(assuntos);
+            return await _assuntoService.Get();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<DomainAssunto>> Get(int id)
+        public async Task<ActionResult<Assunto>> Get(int id)
         {
-            var assunto = await _assuntoRepository.GetByIdAsync(id);
+            var assunto = await _assuntoService.Get(id);
             if (assunto == null)
             {
                 return NotFound();
             }
-            return _mapper.Map<DomainAssunto>(assunto);
+            return assunto;
         }
 
         [HttpPost]
-        public async Task<ActionResult<DomainAssunto>> Post(DomainAssunto assunto)
+        public async Task<ActionResult<Assunto>> Post(Assunto assunto)
         {
-            var entity = _mapper.Map<EntityAssunto>(assunto);
-            await _assuntoRepository.AddAsync(entity);
-            return CreatedAtAction(nameof(Get), new { id = entity.AssuntoCod }, _mapper.Map<DomainAssunto>(entity));
+            var _assunto = await _assuntoService.Post(assunto);
+            return CreatedAtAction(nameof(Get), new { id = _assunto.Id }, _assunto);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, DomainAssunto assunto)
+        public async Task<IActionResult> Put(int id, Assunto assunto)
         {
             if (id != assunto.Id)
             {
                 return BadRequest();
             }
 
-            var entity = _mapper.Map<EntityAssunto>(assunto);
-            await _assuntoRepository.UpdateAsync(entity);
+            await _assuntoService.Put(id, assunto);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _assuntoRepository.DeleteAsync(id);
+            await _assuntoService.Delete(id);
             return NoContent();
         }
     }

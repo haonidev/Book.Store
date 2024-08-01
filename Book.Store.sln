@@ -5,15 +5,17 @@ VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Store.Application", "Book.Store.Application.csproj", "{1104C41A-420E-4D2A-A97A-EF8069BCE8E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Store.Business", "..\Book.Store.Business\Book.Store.Business.csproj", "{B1410A25-EE97-46A0-AE0F-9B53E2ADA2FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Store.Business", "..\Book.Store.Business\Book.Store.Business.csproj", "{B1410A25-EE97-46A0-AE0F-9B53E2ADA2FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Store.Data", "..\Book.Store.Data\Book.Store.Data.csproj", "{6852F1C4-DA5B-42BA-9D82-7E1A18B720D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Store.Data", "..\Book.Store.Data\Book.Store.Data.csproj", "{6852F1C4-DA5B-42BA-9D82-7E1A18B720D1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A0B3FCCC-5BD0-4262-98A7-D05AADC3FD7C}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		Dockerfile = Dockerfile
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Store.Tests", "..\Book.Store.Tests\Book.Store.Tests.csproj", "{A97EA21A-2EF6-41E8-9291-BDF644BE8972}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6852F1C4-DA5B-42BA-9D82-7E1A18B720D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6852F1C4-DA5B-42BA-9D82-7E1A18B720D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6852F1C4-DA5B-42BA-9D82-7E1A18B720D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A97EA21A-2EF6-41E8-9291-BDF644BE8972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A97EA21A-2EF6-41E8-9291-BDF644BE8972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A97EA21A-2EF6-41E8-9291-BDF644BE8972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A97EA21A-2EF6-41E8-9291-BDF644BE8972}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
